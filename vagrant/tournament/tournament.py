@@ -13,6 +13,11 @@ def connect():
 
 def deleteMatches():
     """Remove all the match records from the database."""
+    db = connect()
+    cursor = db.cursor()
+    cursor.execute("DELETE FROM matches;")
+    db.commit()
+    db.close()
 
 
 def deletePlayers():
@@ -72,6 +77,11 @@ def reportMatch(winner, loser):
       winner:  the id number of the player who won
       loser:  the id number of the player who lost
     """
+    db = connect()
+    cursor = db.cursor()
+    cursor.execute("INSERT INTO matches VALUES(%s, %s);", (winner, loser))
+    db.commit()
+    db.close()
  
  
 def swissPairings():
