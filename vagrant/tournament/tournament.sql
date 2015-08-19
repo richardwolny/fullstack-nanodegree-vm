@@ -6,8 +6,8 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
-DROP VIEW IF EXISTS won;
 DROP VIEW IF EXISTS played;
+DROP VIEW IF EXISTS won;
 DROP TABLE IF EXISTS matches;
 DROP TABLE IF EXISTS players;
 
@@ -26,8 +26,3 @@ SELECT players.id, count(matches.winner_id + matches.loser_id)
 from players LEFT OUTER JOIN matches
 ON players.id = matches.winner_id OR players.id = matches.loser_id
 GROUP BY players.id;
-
-INSERT INTO players VALUES('richard');
-INSERT INTO players VALUES('jenny');
-INSERT INTO players VALUES('natalie');
-INSERT INTO players VALUES('sam');
